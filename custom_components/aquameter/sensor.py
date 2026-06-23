@@ -44,7 +44,6 @@ class AquaMeterSensor(SensorEntity):
             self._handle_update(self.client.latest_data)
 
     def _handle_update(self, data):
-        _LOGGER.warning("AquaMeter sensor update: key=%s data=%s", self.key, data)
         if self.key == "water":
             self._attr_native_value = data.water
 
