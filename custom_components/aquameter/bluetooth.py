@@ -57,7 +57,7 @@ class AquaMeterBluetoothClient:
         if not line:
             return
 
-        _LOGGER.debug("AquaMeter RX: %s", line)
+        _LOGGER.warning("AquaMeter RX: %s", line)
 
         data = parse_q_packet(line)
 
