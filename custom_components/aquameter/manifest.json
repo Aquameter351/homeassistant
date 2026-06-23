@@ -4,6 +4,7 @@
   "version": "1.1.0",
   "documentation": "https://aquameter.pt",
   "integration_type": "device",
+  "config_flow": true,
   "dependencies": ["bluetooth"],
   "codeowners": ["@Aquameter351"],
   "bluetooth": [
