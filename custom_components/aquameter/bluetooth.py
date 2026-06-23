@@ -1,9 +1,9 @@
-import asyncio
 import logging
+from typing import Optional
 
 from bleak_retry_connector import BleakClientWithServiceCache, establish_connection
 
-from .const import SERVICE_UUID, TX_UUID
+from .const import TX_UUID
 from .parser import AquaMeterData, parse_q_packet
 
 _LOGGER = logging.getLogger(__name__)
@@ -12,8 +12,8 @@ _LOGGER = logging.getLogger(__name__)
 class AquaMeterBluetoothClient:
     def __init__(self, ble_device):
         self.ble_device = ble_device
-        self.client: BleakClientWithServiceCache | None = None
-        self.latest_data: AquaMeterData | None = None
+        self.client: Optional[BleakClientWithServiceCache] = None
+        self.latest_data: Optional[AquaMeterData] = None
         self._buffer = ""
         self._callbacks = []
 
