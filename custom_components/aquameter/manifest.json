@@ -1,0 +1,14 @@
+{
+  "domain": "aquameter",
+  "name": "AquaMeter",
+  "version": "0.1.0",
+  "documentation": "https://aquameter.pt",
+  "integration_type": "device",
+  "dependencies": ["bluetooth"],
+  "codeowners": ["@Aquameter351"],
+  "bluetooth": [
+    {
+      "service_uuid": "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
+    }
+  ]
+}
