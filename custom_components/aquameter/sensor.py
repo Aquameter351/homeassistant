@@ -50,4 +50,4 @@ class AquaMeterSensor(SensorEntity):
         elif self.key == "today":
             self._attr_native_value = data.today
 
-        self.schedule_update_ha_state(True)
+        self.async_write_ha_state()
