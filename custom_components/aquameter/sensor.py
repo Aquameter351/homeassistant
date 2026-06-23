@@ -31,8 +31,13 @@ class AquaMeterSensor(SensorEntity):
         self._attr_name = f"AquaMeter {name}"
         self._attr_native_unit_of_measurement = unit
         self._attr_native_value = None
+        self._attr_should_poll = False
 
-        client.register_callback(self._handle_update)
+    async def async_added_to_hass(self):
+        self.client.register_callback(self._handle_update)
+
+        if self.client.latest_data is not None:
+            self._handle_update(self.client.latest_data)
 
     def _handle_update(self, data):
         if self.key == "water":
@@ -50,4 +55,5 @@ class AquaMeterSensor(SensorEntity):
         elif self.key == "today":
             self._attr_native_value = data.today
 
-        self.async_write_ha_state()
+        if self.hass is not None:
+            self.async_write_ha_state()
