@@ -1,7 +1,7 @@
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
-from homeassistant.components import bluetooth
+from homeassistant.components.bluetooth import async_discovered_service_info
 
 from .bluetooth import AquaMeterBluetoothClient
 from .const import DOMAIN, SERVICE_UUID
@@ -18,7 +18,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     ble_device = None
 
-    for info in bluetooth.async_discovered_service_info(hass, connectable=True):
+    for info in async_discovered_service_info(hass, connectable=True):
         uuids = [u.lower() for u in info.service_uuids]
         if SERVICE_UUID.lower() in uuids:
             ble_device = info.device
