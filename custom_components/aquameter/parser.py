@@ -1,3 +1,4 @@
+from typing import Optional
 from dataclasses import dataclass
 
 
@@ -13,7 +14,7 @@ class AquaMeterData:
     language: int
 
 
-def parse_q_packet(packet: str) -> AquaMeterData | None:
+def parse_q_packet(packet: str) -> Optional[AquaMeterData]:
     try:
         parts = packet.strip().split("|")
 
